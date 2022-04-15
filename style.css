@@ -1,0 +1,266 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--first-color: #f9f9f9;
+	--second-color: #14161f;
+	--border-color: rgba(0, 0, 0, 0.2);
+}
+
+.body {
+	font-family: "Montserrat", sans-serif;
+	min-height: 100vh;
+	background-color: var(--first-color);
+	color: var(--second-color);
+}
+
+.dark {
+	background-color: var(--second-color);
+	color: var(--first-color);
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 40px;
+	min-height: 220px;
+}
+
+.header h1 {
+	font-weight: 200;
+	font-size: 64px;
+	margin-bottom: 10px;
+}
+
+.header p {
+	font-size: 24px;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.transactions {
+	width: 1000px;
+}
+
+.transactions__header,
+.optionsHead__title,
+.styleSelection__title,
+.addTransactionPanelTitle {
+	margin-bottom: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 36px;
+	font-weight: 200;
+}
+
+.incomeArea__header,
+.expensesArea__header {
+	margin-bottom: 30px;
+	text-align: center;
+	font-size: 28px;
+}
+
+.incomeArea__header,
+.transactionAmount {
+	color: rgb(19, 200, 108);
+	font-weight: bold;
+}
+
+.expensesArea .transactionAmount {
+	color: tomato;
+	font-weight: bold;
+}
+
+.expensesArea__header {
+	color: tomato;
+}
+
+.transactions__list {
+	display: flex;
+}
+
+.incomeArea,
+.expensesArea {
+	margin: 0 20px;
+	padding: 30px;
+	width: 50%;
+	border: 1px solid var(--border-color);
+}
+
+.transaction {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 0;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.transaction:last-child {
+	border-bottom: none;
+}
+
+.expensesName,
+.transactionName {
+	font-size: 18px;
+}
+
+.delete {
+	margin-left: 10px;
+	background: none;
+	border: none;
+	font-size: 18px;
+	color: var(--second-color);
+	cursor: pointer;
+	transition: transform 0.3s;
+}
+
+.delete:hover {
+	transform: scale(1.2);
+}
+
+.options {
+	padding: 80px 40px;
+	max-width: 500px;
+	border: 1px solid var(--border-color);
+}
+
+.optionsHead__availableMoney {
+	font-size: 60px;
+	text-align: center;
+}
+
+.options__addTransaction {
+	display: flex;
+	justify-content: space-around;
+	margin: 50px 0;
+}
+
+.options__addButton,
+.options__removeAllButton {
+	padding: 12px 20px;
+	color: var(--second-color);
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	background: none;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.options__addButton:hover,
+.options__removeAllButton:hover {
+	background-color: var(--second-color);
+	color: var(--first-color);
+}
+
+.styleSelection {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.colorLight,
+.colorDark {
+	width: 50px;
+	height: 50px;
+	margin: 0 30px;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: transform 0.3s;
+}
+
+.colorLight:hover,
+.colorDark:hover {
+	transform: scale(1.2);
+}
+
+.colorLight {
+	border: 1px solid #14161f;
+	background-color: #f9f9f9;
+}
+
+.colorDark {
+	border: 1px solid #f9f9f9;
+	background-color: #14161f;
+}
+
+.addTransactionPanel {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(315deg, #4c4177, #2a5470 74%);
+	color: white;
+}
+
+.addTransactionPanelTitle {
+	margin-bottom: 0;
+}
+
+.addTransactionPanel label {
+	margin-top: 40px;
+	margin-bottom: 5px;
+	font-size: 26px;
+}
+
+.addTransactionPanel small {
+	font-style: italic;
+	margin-bottom: 15px;
+	color: #ddd;
+}
+
+.addTransactionPanel input,
+.addTransactionPanel select {
+	width: 800px;
+}
+
+.addTransactionPanel input,
+.addTransactionPanel select,
+.addTransactionPanel button {
+	padding: 10px 20px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.addTransactionPanel input,
+.addTransactionPanel select,
+.addTransactionPanel option {
+	font-size: 18px;
+}
+
+.panelButtons {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.panelButtons button {
+	margin: 0 30px;
+	padding: 15px 40px;
+	background: none;
+	color: white;
+	border: 1px solid white;
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+
+.panelButtons button:hover {
+	background-color: rgb(25, 27, 51);
+}
+
+.far {
+	margin-right: 10px;
+	font-size: 18px;
+}
