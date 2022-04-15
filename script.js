@@ -22,3 +22,34 @@ let ID = 0;
 let categoryIcon;
 let selectedCategory;
 let moneyArrey = [0];
+
+const showPanel = () => {
+	addTransactionPanel.style.display = "flex";
+};
+
+const closePanel = () => {
+	addTransactionPanel.style.display = "none";
+	clearInputs();
+};
+
+const checkForm = () => {
+	if (
+		panelNameTransaction.value !== "" &&
+		panelAmountTransaction.value !== "" &&
+		selectTransactonCategory.value !== "none"
+	) {
+		console.log("jest ok");
+	} else {
+		console.log("nie jest ok");
+	}
+};
+
+const clearInputs = () => {
+	panelNameTransaction.value = "";
+	panelAmountTransaction.value = "";
+	selectTransactonCategory.selectedIndex = 0;
+};
+
+addTransactionButton.addEventListener("click", showPanel);
+cancelButton.addEventListener("click", closePanel);
+saveButton.addEventListener("click", checkForm);
