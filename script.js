@@ -14,6 +14,7 @@ const cancelButton = document.querySelector(".js-cancelButton");
 const removeAllTransactionButton = document.querySelector(".js-removeAll");
 
 const transactionName = document.querySelector(".js-transactionName");
+const transactionAmount = document.querySelector(".js-transactionAmount ");
 const lightColorButton = document.querySelector(".js-colorLight");
 const darkColorButton = document.querySelector(".js-colorDark");
 
@@ -38,7 +39,8 @@ const checkForm = () => {
 		panelAmountTransaction.value !== "" &&
 		selectTransactonCategory.value !== "none"
 	) {
-		console.log("jest ok");
+		console.log("ok");
+		createNewTransaction();
 	} else {
 		console.log("nie jest ok");
 	}
@@ -48,6 +50,56 @@ const clearInputs = () => {
 	panelNameTransaction.value = "";
 	panelAmountTransaction.value = "";
 	selectTransactonCategory.selectedIndex = 0;
+};
+
+const createNewTransaction = () => {
+	const newTransaction = document.createElement("div");
+	console.log(newTransaction);
+	newTransaction.classList.add("transaction");
+	newTransaction.setAttribute("id", ID);
+
+	checkCategory(selectedCategory);
+
+	newTransaction.innerHTML = `
+        <p class="transactionName js-transactionName">${categoryIcon}
+          ${panelNameTransaction.value}
+        </p>
+        <p class="transactionAmount js-transactionAmount">
+            ${panelAmountTransaction.value}zł
+            <button class="delete js-delete onclick="deleteTransaction(${ID})"><i class="fas fa-times"></i></button>
+        </p>
+	`;
+
+	panelAmountTransaction.value > 0
+		? incomeArea.appendChild(newTransaction) && newTransaction.classList.add("income")
+		: expensesArea.appendChild(newTransaction) && newTransaction.classList.add("expense");
+
+	moneyArrey.push(parseFloat(panelAmountTransaction.value));
+
+	closePanel();
+	ID++;
+	clearInputs();
+};
+
+const selectCategory = () => {
+	selectedCategory = selectTransactonCategory.options[selectTransactonCategory.selectedIndex].text;
+};
+
+const checkCategory = transaction => {
+	switch (transaction) {
+		case "[ + ] Przychód":
+			categoryIcon = '<i class="fas fa-money-bill-wave"></i>';
+			break;
+		case "[ - ] Zakupy":
+			categoryIcon = '<i class="fas fa-cart-arrow-down"></i>';
+			break;
+		case "[ - ] Jedzenie":
+			categoryIcon = '<i class="fas fa-hamburger"></i>';
+			break;
+		case "[ - ] Kino":
+			categoryIcon = '<i class="fas fa-film"></i>';
+			break;
+	}
 };
 
 addTransactionButton.addEventListener("click", showPanel);
