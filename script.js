@@ -75,6 +75,7 @@ const createNewTransaction = () => {
 		: expensesArea.appendChild(newTransaction) && newTransaction.classList.add("expense");
 
 	moneyArrey.push(parseFloat(panelAmountTransaction.value));
+	countMoney(moneyArrey);
 
 	closePanel();
 	ID++;
@@ -100,6 +101,11 @@ const checkCategory = transaction => {
 			categoryIcon = '<i class="fas fa-film"></i>';
 			break;
 	}
+};
+
+const countMoney = money => {
+	const newMoney = money.reduce((a, b) => a + b);
+	availableMoney.textContent = `${newMoney}zł`;
 };
 
 addTransactionButton.addEventListener("click", showPanel);
