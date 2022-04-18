@@ -39,7 +39,6 @@ const checkForm = () => {
 		panelAmountTransaction.value !== "" &&
 		selectTransactonCategory.value !== "none"
 	) {
-		console.log("ok");
 		createNewTransaction();
 	} else {
 		console.log("nie jest ok");
@@ -54,7 +53,6 @@ const clearInputs = () => {
 
 const createNewTransaction = () => {
 	const newTransaction = document.createElement("div");
-	console.log(newTransaction);
 	newTransaction.classList.add("transaction");
 	newTransaction.setAttribute("id", ID);
 
@@ -66,7 +64,7 @@ const createNewTransaction = () => {
         </p>
         <p class="transactionAmount js-transactionAmount">
             ${panelAmountTransaction.value}zł
-            <button class="delete js-delete onclick="deleteTransaction(${ID})"><i class="fas fa-times"></i></button>
+            <button class="delete js-delete" onclick="deleteTransaction(${ID})"><i class="fas fa-times"></i></button>
         </p>
 	`;
 
@@ -106,6 +104,22 @@ const checkCategory = transaction => {
 const countMoney = money => {
 	const newMoney = money.reduce((a, b) => a + b);
 	availableMoney.textContent = `${newMoney}zł`;
+};
+
+const deleteTransaction = id => {
+	const transactionToDelete = document.getElementById(id);
+	const transactionAmount = parseFloat(transactionToDelete.childNodes[3].innerText);
+	const indexOfTransaction = moneyArrey.indexOf(transactionAmount);
+
+	moneyArrey.splice(indexOfTransaction, 1);
+
+	if (transactionToDelete.classList.contains("income")) {
+		incomeArea.removeChild(transactionToDelete);
+	} else {
+		expensesArea.removeChild(transactionToDelete);
+	}
+
+	countMoney(moneyArrey);
 };
 
 addTransactionButton.addEventListener("click", showPanel);
