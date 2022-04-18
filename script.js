@@ -122,6 +122,27 @@ const deleteTransaction = id => {
 	countMoney(moneyArrey);
 };
 
+const deleteAllTransaction = () => {
+	incomeArea.innerHTML = '<h3 class="incomeArea__header">Wpływy:</h3>';
+	expensesArea.innerHTML = '<h3 class="expensesArea__header">Wydatki:</h3>';
+	availableMoney.textContent = "0zł";
+	moneyArrey = [0];
+};
+
+const changedThemeToDark = () => {
+	root.style.setProperty("--first-color", "#14161f");
+	root.style.setProperty("--second-color", "#f9f9f9");
+	root.style.setProperty("--border-color", "rgba(255, 255, 255, 0.2)");
+};
+const changedThemeToLight = () => {
+	root.style.setProperty("--first-color", "#f9f9f9");
+	root.style.setProperty("--second-color", "#14161f");
+	root.style.setProperty("--border-color", "rgba(0, 0,0, 0.2)");
+};
+
 addTransactionButton.addEventListener("click", showPanel);
 cancelButton.addEventListener("click", closePanel);
 saveButton.addEventListener("click", checkForm);
+removeAllTransactionButton.addEventListener("click", deleteAllTransaction);
+darkColorButton.addEventListener("click", changedThemeToDark);
+lightColorButton.addEventListener("click", changedThemeToLight);
